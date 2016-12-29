@@ -19,7 +19,7 @@ SQLITE_DEFINES = SQLITE_OMIT_LOAD_EXTENSION SQLITE_OMIT_COMPLETE \
 TARGET = qsqlcipher
 
 #isEmpty(QT_SRCDIR):QT_SRCDIR = qtbase
-isEmpty(QT_SRCDIR):QT_SRCDIR = /home/vlad/Downloads/qtbase-opensource-src-5.6.2/ 
+isEmpty(QT_SRCDIR):QT_SRCDIR = /home/vlad/Downloads/qtbase-opensource-src-5.7.1/ 
 
 DRIVER_SRCDIR = $$QT_SRCDIR/src/sql/drivers/sqlite
 PLUGIN_SRCDIR = $$QT_SRCDIR/src/plugins/sqldrivers
