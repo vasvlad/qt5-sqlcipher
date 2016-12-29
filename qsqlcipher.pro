@@ -59,19 +59,4 @@ CONFIG += force_independent
 PLUGIN_CLASS_NAME = QSQLCipherDriverPlugin
 include($$PLUGIN_SRCDIR/qsqldriverbase.pri)
 
-# Configure sqlcipher
-config_sqlcipher.target = $$PWD/sqlcipher/Makefile
-config_sqlcipher.commands = cd $$PWD/sqlcipher && \
-                            ./configure $$SQLCIPHER_CONFIGURE \
-                                --prefix=$$OUT_PWD
-
-# Build sqlcipher
-sqlcipher.target = $$OUT_PWD/lib
-#sqlcipher.commands = $(MAKE) -C $$PWD/sqlcipher install
-sqlcipher.commands = $(MAKE) -C $$PWD/sqlcipher 
-sqlcipher.depends = config_sqlcipher
-
-# Configure and build sqlcipher before building the plugin
-QMAKE_EXTRA_TARGETS += config_sqlcipher sqlcipher
-PRE_TARGETDEPS += $$sqlcipher.target
 
