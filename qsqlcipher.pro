@@ -19,9 +19,10 @@ SQLITE_DEFINES = SQLITE_OMIT_LOAD_EXTENSION SQLITE_OMIT_COMPLETE \
 TARGET = qsqlcipher
 
 #isEmpty(QT_SRCDIR):QT_SRCDIR = qtbase
-isEmpty(QT_SRCDIR):QT_SRCDIR = /home/vlad/Downloads/qtbase-opensource-src-5.7.1/ 
+isEmpty(QT_SRCDIR):QT_SRCDIR = /home/vlad/Downloads/qtbase-opensource-src-5.8.0 
 
-DRIVER_SRCDIR = $$QT_SRCDIR/src/sql/drivers/sqlite
+#DRIVER_SRCDIR = $$QT_SRCDIR/src/sql/drivers/sqlite
+DRIVER_SRCDIR = $$QT_SRCDIR/src/plugins/sqldrivers/sqlite
 PLUGIN_SRCDIR = $$QT_SRCDIR/src/plugins/sqldrivers
 
 !exists($$DRIVER_SRCDIR) {
@@ -46,7 +47,9 @@ CONFIG += force_independent
     DEFINES += $$SQLITE_DEFINES
     !contains(CONFIG, largefile):DEFINES += SQLITE_DISABLE_LFS
     INCLUDEPATH += $$OUT_PWD/include
-    LIBS        += -L$$OUT_PWD/lib -lsqlcipher  -lcrypto -L../android-database-sqlcipher/obj/local/armeabi/
+    #LIBS        += -L$$OUT_PWD/lib -lsqlcipher  -lcrypto -L../android-database-sqlcipher/obj/local/armeabi/
+    LIBS        += -L$$OUT_PWD/lib -lsqlcipher  -lcrypto -L../android-database-sqlcipher/obj/local/armeabi-v7a/ -L../android-database-sqlcipher/external/android-libs/armeabi-v7a/
+#    LIBS        += -L$$OUT_PWD/lib -lsqlcipher  -lcrypto 
     QMAKE_RPATHDIR += $$OUT_PWD/lib
 } else {
     LIBS *= $$QT_LFLAGS_SQLITE
